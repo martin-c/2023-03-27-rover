@@ -17,7 +17,7 @@ radio.onReceivedValue(function (name, value) {
     } else if (hdg_delta < -180) {
         hdg_delta += 360
     }
-    if (hdg_delta > 10) {
+    if (hdg_delta > 15) {
         music.playSoundEffect(music.createSoundEffect(
         WaveShape.Sine,
         4000,
@@ -28,7 +28,7 @@ radio.onReceivedValue(function (name, value) {
         SoundExpressionEffect.None,
         InterpolationCurve.Linear
         ), SoundExpressionPlayMode.UntilDone)
-    } else if (hdg_delta < -10) {
+    } else if (hdg_delta < -15) {
         music.playSoundEffect(music.createSoundEffect(
         WaveShape.Sine,
         0,
