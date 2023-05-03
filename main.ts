@@ -17,33 +17,13 @@ radio.onReceivedValue(function (name, value) {
     } else if (hdg_delta < -180) {
         hdg_delta += 360
     }
-    if (hdg_delta > 15) {
-        music.playSoundEffect(music.createSoundEffect(
-        WaveShape.Sine,
-        4000,
-        0,
-        255,
-        0,
-        150,
-        SoundExpressionEffect.None,
-        InterpolationCurve.Linear
-        ), SoundExpressionPlayMode.UntilDone)
-    } else if (hdg_delta < -15) {
-        music.playSoundEffect(music.createSoundEffect(
-        WaveShape.Sine,
-        0,
-        4000,
-        255,
-        0,
-        150,
-        SoundExpressionEffect.None,
-        InterpolationCurve.Linear
-        ), SoundExpressionPlayMode.UntilDone)
+    if (Math.abs(hdg_delta) > 15) {
+        music.playTone(262 - hdg_delta, music.beat(BeatFraction.Eighth))
     }
 })
 let hdg_delta = 0
 radio.setGroup(1)
-music.setVolume(100)
+music.setVolume(200)
 hdg_delta = 0
 basic.showIcon(IconNames.Yes)
 basic.forever(function () {
