@@ -6,11 +6,12 @@ input.onButtonPressed(Button.AB, function () {
 })
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "ping") {
+        radio.sendString("png")
         basic.showIcon(IconNames.Confused)
         music.playSoundEffect(music.builtinSoundEffect(soundExpression.sad), SoundExpressionPlayMode.UntilDone)
     } else if (receivedString == "fwd") {
         images.arrowImage(ArrowNames.North).showImage(0)
-        music.playSoundEffect(music.builtinSoundEffect(soundExpression.slide), SoundExpressionPlayMode.UntilDone)
+        music.playSoundEffect(music.createSoundEffect(WaveShape.Sine, 776, 3261, 255, 255, 400, SoundExpressionEffect.Vibrato, InterpolationCurve.Curve), SoundExpressionPlayMode.UntilDone)
     }
 })
 radio.onReceivedValue(function (name, value) {
@@ -26,7 +27,7 @@ radio.onReceivedValue(function (name, value) {
 })
 let hdg_delta = 0
 radio.setGroup(1)
-music.setVolume(200)
+music.setVolume(250)
 hdg_delta = 0
 basic.showIcon(IconNames.Yes)
 basic.forever(function () {
